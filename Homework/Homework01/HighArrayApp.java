@@ -55,6 +55,7 @@ class HighArrayApp {
         arr2.display();
         System.out.println("Max: " + arr2.getMax());
         arr2.display();
+        System.out.println("No Dups: ");
         arr2.noDups();
         arr2.display();
     }
