@@ -1,10 +1,14 @@
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 
 public class HighArray {
     private long[] a;
     private int nElems;
+    private int max;
 
     public HighArray(int max) {
+        this.max = max;
         a = new long[max];
         nElems = 0;
     }
@@ -56,15 +60,18 @@ public class HighArray {
     }
 
     public void noDups() {
+        LinkedHashSet<Long> set = new LinkedHashSet<>();
         for (int i = 0; i < nElems; i++) {
-            for (int j = i + 1; j < nElems; j++) {
-                if (a[i] == a[j]) {
-                    delete(a[j]);
-                    j--;
-                    i--;
-                }
-            }
+            set.add(a[i]);
+        }
+
+        nElems = set.size();
+        a = new long[max];
+
+        Iterator<Long> itr = set.iterator();
+
+        for (int i = 0; i < nElems; i++) {
+            a[i] = itr.next();
         }
     }
-
 }
