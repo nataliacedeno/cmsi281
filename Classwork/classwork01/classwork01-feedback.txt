@@ -1,0 +1,27 @@
+
+
+
+Your code looks quite nice!
+
+Consider spacing your code out vertically a little bit so that it is easier
+for the reader to see groups and blocks.  For example:
+
+import java.util.Scanner;
+
+public class SayHello {
+
+   public static void main (String[] args) {
+
+      Scanner myInput = new Scanner( System.in );
+      String inputName = myInput.nextLine();
+
+      System.out.println("Hello, " + inputName + "!");
+   }
+}
+
+One thing that is missing is prompting the user to enter a name or string of
+some kind.  One basic idea of most programs is that they are designed to be
+a user interface of some kind, so the more information you give to the user,
+the better the user can use the program.
+
+Nice job overall!
