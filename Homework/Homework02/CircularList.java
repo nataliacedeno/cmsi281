@@ -1,7 +1,8 @@
 public class CircularList {
 
    private Node current;
-   private int size;
+   private Node head;
+   public int size;
 
    public CircularList() {
       current = null;
@@ -16,11 +17,23 @@ public class CircularList {
       return current.data;
    }
 
+   public Node getCurrent() {
+      return current;
+   }
+
+   public void setCurrent(Node n) {
+      current = n;
+   }
+
    public void insert(int data) {
       Node node = new Node(data);
       if (size == 0) {
          node.next = node;
          current = node;
+         head = node;
+      } else if (current.next == head) {
+         current.next = node;
+         node.next = head;
       } else {
          node.next = current.next;
          current.next = node;
@@ -34,6 +47,7 @@ public class CircularList {
          System.out.println("Circular list empty. Cannot remove.\n");
       } else {
          current.next = current.next.next;
+         head = current.next;
          size--;
       }
    }
@@ -48,19 +62,25 @@ public class CircularList {
          step();
          i++;
       }
-      return current.next;
+      if (i == size) {
+         System.out.println("Not found");
+         return null;
+      }
+      head = current.next;
+      return head;
    }
 
    public void display() {
       System.out.println();
       for (int i = 0; i < size; i++) {
-         System.out.print("[" + current.next.data + "]");
          step();
+         System.out.print("[" + current.data + "]");
       }
-      System.out.println("\nCurrent: " + current.next.data);
+      System.out.println("\nCurrent: " + current.data);
+      System.out.println("Head: " + head.data);
    }
 
-   private class Node {
+   class Node {
       int data;
       Node next;
 
@@ -86,6 +106,7 @@ public class CircularList {
       l.remove();
       l.display();
       l.findNext(3);
+      l.display();
       l.remove();
       l.display();
    }
