@@ -1,3 +1,12 @@
+/**
+ *  File name: Deque.java
+ *  Purpose: implements a Deque using an array
+ * @author: Hayden Crabbs
+ * @author: Natalia Cedeno
+ *  NOTES    : In this implementation, the "front" of the Deque will be considered
+ *             to be the "left end", making the "rear" of the Deque the "right end".
+ *             Implemented with an array of long primitives
+ */
 class Deque {
     private int maxSize; // max size at creation
     private long[] dequeArray; // the underlying storage
@@ -5,6 +14,9 @@ class Deque {
     private int rearRight; //    this makes things work more like what we expect
     private int nItems;
 
+    /**
+     * Empty Deque Exception
+     */
     private class EmptyDequeException extends Exception {
         public EmptyDequeException(String s) {
             super(s);
@@ -143,6 +155,10 @@ class Deque {
         System.out.println("");
     }
 
+    /**
+     * Main used to test methods
+     * @param args
+     */
     public static void main(String[] args) {
         Deque d = new Deque(5);
         d.insertRight(3);
