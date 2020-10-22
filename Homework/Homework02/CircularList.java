@@ -1,102 +1,92 @@
 public class CircularList {
 
-    private Node head;
-    private int  size;
+   private Node current;
+   private int size;
 
-    public CircularList() {
-       head = null;
-       size = 0;
-    }
+   public CircularList() {
+      current = null;
+      size = 0;
+   }
 
-    public int getSize() {
-       return size;
-    }
+   public int getSize() {
+      return size;
+   }
 
-    public void prepend( int dataToAdd ) {
-       Node currentHead = head;
-       head = new Node( dataToAdd );
-       head.next = currentHead;
-       size++;
-    }
-    public void insertAt(int i, int data){
-       Node node = new Node (data);
-       Iterator it = getIteratorAt(i-1);
-       Iterator myIt = getIteratorAt(i);
-       it.currentNode.next = node;
-       node.next = myIt.currentNode;
-    }
+   public int getCurrentData() {
+      return current.data;
+   }
 
-    public void removeAt(int i){
-       Iterator it = getIteratorAt(i-1);
-       Node temp = it.currentNode;
-       it.next();
-       it.next();
-       temp.next = it.currentNode;
-    }
+   public void insert(int data) {
+      Node node = new Node(data);
+      if (size == 0) {
+         node.next = node;
+         current = node;
+      } else {
+         node.next = current.next;
+         current.next = node;
+      }
+      step();
+      size++;
+   }
 
-    private class Node {
+   public void remove() {
+      if (size == 0) {
+         System.out.println("Circular list empty. Cannot remove.\n");
+      } else {
+         current.next = current.next.next;
+         size--;
+      }
+   }
 
-       int data;           
-       Node next;           
+   public void step() {
+      current = current.next;
+   }
 
-       Node( int d ) {
-          data = d;
-          next = null;
-       }
-    }
+   public Node findNext(int d) {
+      int i = 0;
+      while (current.next.data != d || i < size) {
+         step();
+         i++;
+      }
+      return current.next;
+   }
 
-    public Iterator getIteratorAt( int index ) {
-       if( (index > size) || (index < 0) ) {
-          throw new IllegalArgumentException();
-       }
-       Iterator it = new Iterator();
-       while( index > 0 ) {
-          it.next();
-          index--;
-       }
-       return it;
-    }
-    public static void main(String[] args) {
-        IntLinkedList myList = new IntLinkedList();
-        myList.prepend( 23 );
-        myList.prepend( 19 );
-        myList.prepend( 17 );
-        myList.prepend( 13 );
-        myList.prepend( 11 );
-        myList.prepend(  7 );
-        myList.prepend(  5 );
-        myList.prepend(  3 );
-        myList.prepend(  2 );
-        myList.insertAt(3, 74);
-        myList.removeAt(7);
-        IntLinkedList.Iterator myIt = myList.getIteratorAt(3);
-        System.out.println(myIt.getCurrentInt());
-        myIt = myList.getIteratorAt(7);
-        System.out.println(myIt.getCurrentInt());
-    }
+   public void display() {
+      System.out.println();
+      for (int i = 0; i < size; i++) {
+         System.out.print("[" + current.next.data + "]");
+         step();
+      }
+      System.out.println("\nCurrent: " + current.next.data);
+   }
 
-    public class Iterator {
-       private Node currentNode;
+   private class Node {
+      int data;
+      Node next;
 
-       Iterator() {
-          currentNode = head;
-       }
+      Node(int d) {
+         data = d;
+         next = null;
+      }
+   }
 
-       public void next() {
-          if( currentNode == null ) {
-             return;
-          } else {
-             currentNode = currentNode.next;
-          }
-       }
-
-       public boolean hasNext() {
-          return ((currentNode != null) && (currentNode.next != null));
-       }
-
-       public int getCurrentInt() {
-          return currentNode.data;
-       }
-
-    }
- }
+   public static void main(String[] args) {
+      CircularList l = new CircularList();
+      l.insert(1);
+      l.insert(2);
+      l.display();
+      l.insert(3);
+      l.display();
+      l.insert(4);
+      l.display();
+      l.insert(5);
+      l.display();
+      l.insert(6);
+      l.display();
+      l.remove();
+      l.display();
+      l.findNext(3);
+      l.remove();
+      l.display();
+   }
+}
