@@ -1,0 +1,89 @@
+
+
+Homework02 Evaluation
+======================
+
+Good work on this assignment!  I have a few suggestions/comments:
+
+Your "queue.java" file had a compile error which flagged that the file name
+was not "Queue.java" as you have named the class and the constructor.  THOSE
+NAMES MUST MATCH to get it to compile from the command line.  Leads me to
+believe you are using an IDE-type development environment and are NOT doing
+a compilation from the command line before submitting your code.  This is a
+MUST ~ please do so from now on.  I changed your file name and all is well.
+
+You have duplicate code for your Link class, one in "Link.java" and one in
+"CircularList.java".  When I try to compile everything at once in a command
+window with "javac *.java" I get a compile error:
+
+      Link.java:1: error: duplicate class: Link
+      public class Link{
+             ^
+      1 error
+
+Is there a reason you need two definitions for this class?  If not, why not
+just use the external class?  Keeping that one will allow you to use it in
+other programs later, improving your software success and lowering your time
+of development in those cases.   Just sayin.....
+
+Your testing coverage looks pretty good!  You can always do a little more,
+but you seem to have covered everything nicely!  One example would be to try
+to "pop()" something when you know the stack is empty, to make sure that you
+get a message to that fact.
+
+Nice work on Josephus!!
+
+Everything works as advertised!  Good job on this assignment.
+
+
+Evaluation follows.
+
+scores breakdown:                             worth      yours
+=============================                -------     -----
+Queue.java
+   Queue class compiles                      [1 pt.]       1
+   display method exists                     [1 pt.]       1
+QueueApp.java or main in Queue.java
+   QueueApp class compiles                   [1 pt.]       1
+   tests insert()                            [1 pt.]       1
+   tests remove()                            [1 pt.]       1
+   tests display()                           [1 pt.]       1
+   tests wrap-around insert, remove, display [1 pt.]       1
+Deque.java
+   Deque class compiles                      [1 pt.]       1
+   insertLeft method exists                  [1 pt.]       1
+   insertRight method exists                 [1 pt.]       1
+   removeLeft method exists                  [1 pt.]       1
+   removeRight method exists                 [1 pt.]       1
+   isEmpty method exists                     [1 pt.]       1
+   isFull method exists                      [1 pt.]       1
+DequeApp.java or main in Deque.java
+   tests insertLeft()                        [1 pt.]       1
+   tests insertRight()                       [1 pt.]       1
+   tests removeLeft()                        [1 pt.]       1
+   tests removeRight()                       [1 pt.]       1
+   tests isEmpty()                           [1 pt.]       1
+   tests isFull()                            [1 pt.]       1
+CircluarLinkedList.java
+   Circular linked list class compiles       [1 pt.]       1
+   insertion method works                    [1 pt.]       1
+   deletion method works                     [1 pt.]       1
+   searching method works                    [1 pt.]       1
+CircularStack.java
+   circular stack class compiles             [1 pt.]       1
+   tests work as advertised                  [1 pt.]       1
+Josephus.java
+   Josephus problem class compiles           [EC 2 pt.]    2
+   works as advertised                       [EC 5 pt.]    5
+Coding style
+   Good names, consistent indenting          [4 pt.]       4
+   Headers in all files [free not mentioned] [5 pt.]       5
+
+Total points is 35 for Queue, Deque, and Circ x 2
+ extra credit is 7 points for Josephus
+-------------------
+Grand total is 42 points
+
+You got 42 out of 35 which is 120.0% which is an A-plus
+
+
