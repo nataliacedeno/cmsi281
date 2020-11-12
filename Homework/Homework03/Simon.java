@@ -32,13 +32,20 @@ public class Simon {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
+        System.out.println("\nGet Ready to Start!");
+        long oldTime = System.currentTimeMillis();
+        long currentTime = 0;
+        while (currentTime - oldTime < 2000) {
+            currentTime = System.currentTimeMillis();
+        }
+
         while (true) {
             int round = 1;
             while (checkInput()) {
                 str += randomLetter();
-                System.out.print(str);
-                long oldTime = System.currentTimeMillis();
-                long currentTime = 0;
+                System.out.print("\n" + str);
+                oldTime = System.currentTimeMillis();
+                currentTime = 0;
                 while (currentTime - oldTime < 2000) {
                     currentTime = System.currentTimeMillis();
                 }
@@ -48,13 +55,14 @@ public class Simon {
                 input = sc.nextLine();
                 round++;
             }
-            System.out.println("Play again?");
+            System.out.println("\nPlay again? {y/n}");
             String choice = sc.nextLine();
             if (!choice.toUpperCase().equals("Y")) {
                 break;
             }
             input = "";
             str = "";
+            System.out.println("\nGet Ready to Start!");
         }
         sc.close();
     }

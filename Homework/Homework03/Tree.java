@@ -76,32 +76,6 @@ public class Tree {
         }
     }
 
-    // public void insertLeft(HuffmanNode node) {
-    //     HuffmanNode newHuffmanNode = node;
-    //     if (root == null) // no HuffmanNode in root
-    //         root = newHuffmanNode;
-    //     else {
-    //         HuffmanNode current = root; // start at root
-    //         HuffmanNode parent;
-    //         while (true) {
-    //             parent = current;
-    //             if (newHuffmanNode.count < current.count) { // go left?
-    //                 current = current.leftChild;
-    //                 if (current == null) { // if end of the line, insert on left
-    //                     parent.leftChild = newHuffmanNode;
-    //                     return;
-    //                 }
-    //             } else { // or go right?
-    //                 current = current.rightChild;
-    //                 if (current == null) { // if end of the line, insert on right
-    //                     parent.rightChild = newHuffmanNode;
-    //                     return;
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
-
     public void insertLeft(HuffmanNode node) {
         HuffmanNode newHuffmanNode = node;
         if (root == null) // no HuffmanNode in root

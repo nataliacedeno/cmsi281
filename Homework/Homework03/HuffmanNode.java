@@ -7,6 +7,7 @@ public class HuffmanNode {
     public HuffmanNode() {
         letter = '~';
     }
+
     public void displayNode() // display ourself
     {
         System.out.print('{');
@@ -15,4 +16,5 @@ public class HuffmanNode {
         System.out.print(letter);
         System.out.print("} ");
     }
+
 }

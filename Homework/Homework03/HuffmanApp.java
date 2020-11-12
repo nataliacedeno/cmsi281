@@ -3,7 +3,6 @@ import java.util.*;
 public class HuffmanApp {
     public static Map<Character, Integer> sortedMap = new LinkedHashMap<>();
     public static Map<Character, String> encodedMap = new LinkedHashMap<>();
-    public static ArrayList<Tree> priorityQueue = new ArrayList<>();
     public static Tree huffmanTree;
     public static String message;
 
@@ -46,6 +45,8 @@ public class HuffmanApp {
 
     public static void makeHuffmanTree() {
         Tree tempTree;
+        ArrayList<Tree> priorityQueue = new ArrayList<>();
+
         for (Map.Entry<Character, Integer> e : sortedMap.entrySet()) {
             tempTree = new Tree();
             tempTree.insert(e.getKey(), e.getValue());
@@ -70,7 +71,7 @@ public class HuffmanApp {
         huffmanTree = priorityQueue.get(0);
     }
 
-    public static void encodeTree() {
+    public static void makeEncodedMap() {
         Tree t = huffmanTree;
         encodedMap = new LinkedHashMap<>();
         for (Character c : sortedMap.keySet()) {
@@ -140,7 +141,7 @@ public class HuffmanApp {
     public static void main(String[] args) {
         makeSortedMap(input());
         makeHuffmanTree();
-        encodeTree();
+        makeEncodedMap();
         decodeString(encodeString());
     }
 }
