@@ -2,7 +2,10 @@ import java.util.*;
 
 public class HuffmanApp {
     public static Map<Character, Integer> sortedMap = new LinkedHashMap<>();
+    public static Map<Character, Integer> encodedMap = new LinkedHashMap<>();
     public static ArrayList<Tree> priorityQueue = new ArrayList<>();
+    public static Tree huffmanTree;
+    public static String message;
 
     public static String input() {
         Scanner sc = new Scanner(System.in);
@@ -13,6 +16,8 @@ public class HuffmanApp {
             temp = sc.nextLine();
             str = str + "\n" + temp;
         }
+        sc.close();
+        message = str;
         return str;
     }
 
@@ -27,7 +32,6 @@ public class HuffmanApp {
                 map.put(c, 1);
             }
         }
-        System.out.println(map.toString());
 
         ArrayList<Map.Entry<Character, Integer>> arrayList = new ArrayList<>(map.entrySet());
 
@@ -37,7 +41,7 @@ public class HuffmanApp {
             sortedMap.put(e.getKey(), e.getValue());
         }
 
-        System.out.println(sortedMap.toString());
+        System.out.println("Sorted Map:  " + sortedMap.toString());
     }
 
     public static void makeHuffmanTree() {
@@ -54,24 +58,67 @@ public class HuffmanApp {
             int newCount = priorityQueue.get(0).root.count + priorityQueue.get(1).root.count;
             Tree newTree = new Tree();
             newTree.insert(newCount);
-            newTree.insert(priorityQueue.get(0).root);
-            newTree.insert(priorityQueue.get(1).root);
+            newTree.insertLeft(priorityQueue.get(0).root);
+            newTree.insertRight(priorityQueue.get(1).root);
 
             priorityQueue.remove(0);
             priorityQueue.remove(0);
             priorityQueue.add(newTree);
             Collections.sort(priorityQueue, Comparator.comparingInt((e) -> e.root.count));
+
+            huffmanTree = priorityQueue.get(0);
         }
     }
 
     public static void encodeTree() {
-        Tree t = priorityQueue.get(0);
+        Tree t = huffmanTree;
         Map m = sortedMap;
+        HuffmanNode current = t.root;
+        HuffmanNode parent = t.root;
+        String s = "";
+        int counter = 0;
+        while (current != null){
+            if (current.letter == '~' && current.leftChild != null){
+                parent = current;
+                current = current.leftChild;
+                s += "0";
+            } else if (current.letter != '~'){
+                counter ++;
+                m.put(current.letter,Integer.parseInt(s));
+                if(s.endsWith("0")){
+                    parent.leftChild = null;
+                } else {
+                    parent.rightChild = null;
+                }
+                current = t.root;
+                parent = t.root;
+                s = "";
+                if (counter == m.size()){
+                    break;
+                }
+            } else {
+                parent = current;
+                current = current.rightChild;
+                s += "1";
+            }
+        }
+        System.out.println("\nEncoded Map:  " + m.toString());
+        encodedMap = m;
+    }
 
+    public static void encodeString(){
+        char[] ca = message.toCharArray();
+        String s = "";
+        for (char c : ca){
+            s = s + encodedMap.get(c) + " ";
+        }
+        System.out.println("\nEncoded message: " + s);
     }
 
     public static void main(String[] args) {
         makeSortedMap(input());
         makeHuffmanTree();
+        encodeTree();
+        encodeString();
     }
 }
