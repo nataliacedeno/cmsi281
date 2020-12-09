@@ -21,9 +21,9 @@ class PriorityQ {
         return queHeap.remove().getKey();
     }
 
-    // public long peekMax() {
-    //     return queHeap.heapArray[0];
-    // }
+    public long peekMax() {
+        return queHeap.heapArray[0].getKey();
+    }
 
     public boolean isEmpty() {
         return queHeap.isEmpty();
@@ -43,6 +43,7 @@ class PriorityQApp {
         thePQ.insert(10);
         thePQ.insert(40);
         thePQ.insert(20);
+        System.out.println(thePQ.peekMax());
         while (!thePQ.isEmpty()) {
             long item = thePQ.remove();
             System.out.print(item + " ");
