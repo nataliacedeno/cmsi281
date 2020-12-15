@@ -1,0 +1,66 @@
+
+Homework04 Evaluation
+======================
+
+Nice job on this assignment...
+
+Your code looks great but you didn't do any file headers!
+
+
+scores:
+=============================
+Tree Traverser
+   inOrderTraverser method implemented       [1 pt.]
+   2 test sets with at least minimal nodes   [2 pt.]
+   produces proper sequences                 [2 pt.]
+
+Priority Queue
+   Queue creation works correctly            [1 pt.]
+   insertion works correctly                 [1 pt.]
+   isFull() works correctly                  [1 pt.]
+   isEmpty() works correctly                 [1 pt.]
+   removal() works correctly                 [1 pt.]
+   heap representation works correctly       [1 pt.]
+
+Linear Probing String Hasher
+   menu works [gimme, has to work if there]  [1 pt.]
+   shows contents                            [1 pt.]
+   hash table created correctly              [1 pt.]
+   insertion works correctly                 [1 pt.]
+   linear probing works correctly            [1 pt.]
+   deletion works correctly                  [1 pt.]
+   finding works correctly                   [1 pt.]
+
+Digit Folding Hasher
+   menu works [gimme, has to work if there]  [1 pt.]
+   shows contents                            [1 pt.]
+   insertion works correctly                 [1 pt.]
+   linear probing works correctly            [1 pt.]
+   deletion works correctly                  [1 pt.]
+   finding works correctly                   [1 pt.]
+
+Coding style                                 [1 pt.]
+Tests written to test all classes            [1 pt.]
+Headers in all files                         [2 pt.]
+
+Total credit is 30 points
+-------------------------
+
+you got 28 out of 30 which is 93.33% which is an A-minus
+
+Notes:
+======
+It looks like everything is working, but it's a bit hard to tell since you
+don't provide and explanatory output as part of your program.  I had to go
+look at the source code to see what you are running to test your code out.
+In future it would be VERY helpful to include some idea of what is happening
+in the output of the program.
+
+Everything compiles nicely, though.  Clever of you to insert things into the
+Binary Tree such that you get out a sequence!  Do either of you play poker?
+PriorityQ works great!  HashTable works, but testing is pretty minimal.  A
+table with only 10 slots is pretty small, but I can see from the output and
+the code that you did linear probing one time so there are two "hi" strings
+in the table.  Finally, the digit folding seems fine.
+
+Nice ending to the semester, you two!!
